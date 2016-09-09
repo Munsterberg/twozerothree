@@ -1,9 +1,10 @@
 import {Router} from 'express';
 
-const router = Router();
+const fightersRouter = Router();
 
-router.get('/fighters', (req, res) => {
-  res.send('/fighters');
-});
+fightersRouter.route('/fighters')
+  .get((req, res) => {
+    res.send('/fighters');
+  });
 
-export default router;
+export default fightersRouter;
