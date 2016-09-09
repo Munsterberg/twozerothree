@@ -1,6 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
+import morgan from 'morgan';
+import mongoose from 'mongoose';
 
 import homeRoutes from './routes/home';
 
@@ -10,8 +12,8 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(express.static(path.join(__dirname, '/../public')));
+app.use(morgan());
 
 app.use('/', homeRoutes);
 app.use('/', apiFightersRoutes);
