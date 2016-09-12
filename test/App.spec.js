@@ -12,4 +12,3 @@ describe('404 on nonexistent URL', () => {
       .expect('Content-Type', /text\/html/, done)
   });
 });
-
