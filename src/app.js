@@ -8,6 +8,12 @@ import homeRoutes from './routes/home';
 
 import fightersRouter from './routes/api/fighters';
 
+mongoose.connect('mongodb://localhost/fighters', (err) => {
+  if (err) console.log(err);
+
+  console.log('connected to mongo');
+});
+
 const app = express();
 
 app.use(bodyParser.json());
