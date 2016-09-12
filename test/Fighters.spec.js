@@ -100,4 +100,19 @@ describe('Fighters spec', () => {
         });
     });
   });
+
+  describe('DELETE a fighter', () => {
+    it('should delete a single fighter in the database', (done) => {
+      request(app)
+        .delete('/api/fighters/' + fighterId)
+        .set('Accept', 'application/json')
+        .expect(200)
+        .expect('Content-Type', 'application/json')
+        .end((err, res) => {
+          expect(res.body.name).to.equal('Nate');
+          expect(res.body._id).to.equal(fighterId.toString());
+          done();
+        });
+    });
+  });
 });
