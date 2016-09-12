@@ -6,7 +6,7 @@ import request from 'supertest';
 import mongoose from 'mongoose';
 import Fighter from '../src/models/Fighter';
 
-beforeEach((done) => {
+before((done) => {
   mongoose.createConnection(process.env.DB, (err) => {
     if (err) console.log(err);
     console.log('connected to mongo');
@@ -14,7 +14,7 @@ beforeEach((done) => {
   done();
 });
 
-afterEach((done) => {
+after((done) => {
   Fighter.remove({}, (err) => {
     if(err) throw err;
     done();
