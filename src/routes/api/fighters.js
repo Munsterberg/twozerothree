@@ -33,4 +33,17 @@ fightersRouter.get('/fighters/:id', (req, res) => {
   });
 });
 
+fightersRouter.put('/fighters/:id', (req, res) => {
+  const fighterId = req.params.id;
+  const updatedFighter = _.pick(req.body, 'name', 'age');
+
+  Fighter.findByIdAndUpdate(fighterId, updatedFighter, (err, fighter) => {
+    if (err) {
+      throw err;
+    } else {
+      res.json(updatedFighter);
+    }
+  });
+});
+
 export default fightersRouter;
