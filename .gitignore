@@ -43,3 +43,4 @@ jspm_packages
 config/default.json
 
 public/bundle.js
+.env

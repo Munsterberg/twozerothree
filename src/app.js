@@ -8,6 +8,8 @@ import homeRoutes from './routes/home';
 
 import fightersRouter from './routes/api/fighters';
 
+require('dotenv').config();
+
 mongoose.connect('mongodb://localhost/fighters', (err) => {
   if (err) console.log(err);
 
