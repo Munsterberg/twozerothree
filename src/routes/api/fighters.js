@@ -46,4 +46,14 @@ fightersRouter.put('/fighters/:id', (req, res) => {
   });
 });
 
+fightersRouter.delete('/fighters/:id', (req, res) => {
+  const fighterId = req.params.id;
+
+  Fighter.findByIdAndRemove(fighterId, (err, deletedFighter) => {
+    if (err) throw err;
+
+    res.json(deletedFighter);
+  });
+});
+
 export default fightersRouter;
