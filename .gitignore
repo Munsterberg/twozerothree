@@ -44,3 +44,4 @@ config/default.json
 
 public/bundle.js
 .env
+test/helpers/.env.test

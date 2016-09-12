@@ -9,9 +9,9 @@ fightersRouter.route('/fighters')
     res.json({id: 1, name: 'Stipe Miocic'});
   })
   .post((req, res) => {
-    const body = _.pick(req.body, 'name', 'age');
+    const newFighter = _.pick(req.body, 'name', 'age');
 
-    Fighter.create(body).then((fighter) => {
+    Fighter.create(newFighter).then((fighter) => {
       res.json(fighter);
     }, (err) => {
       res.status(400).send(err);
