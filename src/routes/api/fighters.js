@@ -2,7 +2,7 @@ import _ from 'lodash';
 import {Router} from 'express';
 import Fighter from '../../models/Fighter';
 
-const fightersRouter = Router();
+const fightersRouter = Router(); // eslint-disable-line
 
 fightersRouter.route('/fighters')
   .get((req, res) => {
