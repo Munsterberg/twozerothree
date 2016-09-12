@@ -10,9 +10,8 @@ import fightersRouter from './routes/api/fighters';
 
 require('dotenv').config();
 
-mongoose.connect('mongodb://localhost/fighters', (err) => {
+mongoose.connect(process.env.DB, (err) => {
   if (err) console.log(err);
-
   console.log('connected to mongo');
 });
 

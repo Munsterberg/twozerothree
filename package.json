@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-watch src/server.js",
-    "test": "mocha --require test/helpers/setup.js || true"
+    "test": "NODE_ENV=test mocha --require test/helpers/setup.js || true"
   },
   "author": "",
   "license": "MIT",
