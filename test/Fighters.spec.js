@@ -34,7 +34,7 @@ describe('Fighters spec', () => {
         .get('/api/fighters')
         .set('Accept', 'application/json')
         .expect(200)
-        .expect('Content-Type', /application\/json/)
+        .expect('Content-Type', 'application/json/')
         .end((err, res) => {
           let body = res.body[0];
           expect(body._id).to.not.equal(null);
@@ -72,11 +72,30 @@ describe('Fighters spec', () => {
         .get('/api/fighters/' + fighterId)
         .set('Accept', 'application/json')
         .expect(200)
-        .expect('Content-Type', /application\/json/)
+        .expect('Content-Type', 'application/json/')
         .end((err, res) => {
           expect(res.body.name).to.equal('Conor');
           expect(res.body.age).to.equal(29);
           expect(res.body._id).to.have.length.above(1);
+          done();
+        });
+    });
+  });
+
+  describe('PUT a fighter', () => {
+    it('should update a single fighter in the databse', (done) => {
+      request(app)
+        .put('/api/fighters/' + fighterId)
+        .set('Accept', 'application/json')
+        .send({
+          name: 'Nate',
+          age: 32
+        })
+        .expect(200)
+        .expect('Content-Type', 'application/json')
+        .end((err, res) => {
+          expect(res.body.name).to.equal('Nate');
+          expect(res.body.age).to.equal(32);
           done();
         });
     });
