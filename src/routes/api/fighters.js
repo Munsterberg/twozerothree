@@ -25,11 +25,8 @@ fightersRouter.get('/fighters/:id', (req, res) => {
   const fighterId = req.params.id;
 
   Fighter.findById(fighterId, (err, fighter) => {
-    if (err) {
-      res.status(400).send();
-    } else {
-      res.json(fighter.toJSON());
-    }
+    if (err) res.status(400).send();
+    res.json(fighter.toJSON());
   });
 });
 
@@ -37,12 +34,9 @@ fightersRouter.put('/fighters/:id', (req, res) => {
   const fighterId = req.params.id;
   const updatedFighter = _.pick(req.body, 'name', 'age');
 
-  Fighter.findByIdAndUpdate(fighterId, updatedFighter, (err, fighter) => {
-    if (err) {
-      throw err;
-    } else {
-      res.json(updatedFighter);
-    }
+  Fighter.findByIdAndUpdate(fighterId, updatedFighter, (err) => {
+    if (err) throw err;
+    res.json(updatedFighter);
   });
 });
 
@@ -51,7 +45,6 @@ fightersRouter.delete('/fighters/:id', (req, res) => {
 
   Fighter.findByIdAndRemove(fighterId, (err, deletedFighter) => {
     if (err) throw err;
-
     res.json(deletedFighter);
   });
 });
